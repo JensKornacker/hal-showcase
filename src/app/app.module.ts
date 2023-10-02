@@ -8,6 +8,7 @@ import {SidebarComponent} from "./layout/layout/layout/sidebar/sidebar.component
 import {HeaderComponent} from "./layout/layout/layout/header/header.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { HomeComponent } from './home/home.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
             imports: [
               BrowserModule,
               AppRoutingModule,
-              FontAwesomeModule
+              FontAwesomeModule,
+              NgOptimizedImage
             ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NavigationEnd} from "@angular/router";
 import {SidebarComponent} from "./layout/layout/layout/sidebar/sidebar.component";
-import {NavHeaderComponent} from "./layout/layout/layout/header/nav-header.component";
+import {HeaderComponent} from "./layout/layout/layout/header/header.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { HomeComponent } from './home/home.component';
 
@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     SidebarComponent,
-    NavHeaderComponent,
+    HeaderComponent,
     HomeComponent
   ],
             imports: [

@@ -1,4 +1,4 @@
-$topnav-background-color: #f8f9fa;
+$topnav-background-color: #ffffff;
 .sidebar {
   border-radius: 0;
   position: fixed;
@@ -9,6 +9,7 @@ $topnav-background-color: #f8f9fa;
   margin-left: -235px;
   margin-bottom: 48px;
   border: none;
+  border-right: 1px solid #dddddd;
   border-radius: 0;
   overflow-y: auto;
   background-color: $topnav-background-color;
@@ -188,4 +189,12 @@ $topnav-background-color: #f8f9fa;
   span {
     display: none;
   }
+}
+
+.list-group-item {
+  color: #6c757d;
+}
+
+fa-icon {
+  color: #6c757d;
 }

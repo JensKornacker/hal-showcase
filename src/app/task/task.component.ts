@@ -1,20 +1,61 @@
-import {Component} from '@angular/core';
-// @ts-ignore
-import {BcUserTask} from "@vanillabp/bc-shared";
-import {ComponentProps} from "react";
-import {ReactComponentDirective} from "../shared/react-component.directive";
-import {CommonModule} from "@angular/common";
-import {AppModule} from "../app.module";
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {FormsModule} from "@angular/forms";
+import {TaskService} from "./service/task.service";
+
+export interface IRideCharged {
+  amount: number;
+}
 
 @Component({
              standalone: true,
              selector: 'app-task',
-             imports: [ReactComponentDirective, CommonModule, AppModule],
              templateUrl: './task.component.html',
+             imports: [
+               FormsModule
+             ],
              styleUrls: ['./task.component.scss']
            })
-export class TaskComponent {
+export class TaskComponent implements OnInit, OnDestroy {
 
-  selectProps: ComponentProps<BcUserTask> = {}
+  private subscription$: Subscription[] = [];
+  rideId: string;
+  amount: number;
+  private rideCharged: IRideCharged;
 
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private taskService: TaskService,
+    private router: Router
+  ) {
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$.forEach((s) => {
+      s.unsubscribe();
+    })
+  }
+
+  ngOnInit(): void {
+    this.rideId = this.activatedRoute.snapshot.paramMap.get('rideId');
+  }
+
+  charge() {
+    this.rideCharged = {
+      amount: this.amount
+    }
+    console.log("rideCharged", this.rideCharged);
+    this.subscription$.push(
+      this.taskService.completeTask(this.rideId, this.rideCharged).subscribe({
+        next: (result) => {
+          console.log('result', result);
+          this.router.navigate(['/home'])
+        },
+        error: err => {
+          console.log('error', err);
+        }
+      })
+    )
+  }
 }

@@ -1,11 +1,6 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
   <div class="list-group mt-5">
-<!--    <a [routerLink]="['/users', currentUser.username]" [routerLinkActive]="['router-link-active']" class="list-group-item">-->
-<!--    <a class="list-group-item">-->
-<!--      <fa-icon [icon]="faUser"></fa-icon>&nbsp;-->
-<!--      <span>jensitus</span>-->
-<!--      <span>{{ currentUser.username }}</span>-->
-<!--    </a>-->
+
     <a [routerLink]="['/task-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <fa-icon [icon]="faTachometerAlt"></fa-icon>&nbsp;
       <span>{{ 'Aufgaben' }}</span>
@@ -14,11 +9,10 @@
       <fa-icon [icon]="faBars"></fa-icon>&nbsp;
       <span>{{ 'Vorgänge' }}</span>
     </a>
-<!--    <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <a [routerLink]="['/integrate-react']" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <fa-icon [icon]="faPowerOff"></fa-icon>&nbsp;
-      <span>{{ 'Log Out' }}</span>
-    </a>-->
-
+      <span>{{ 'React' }}</span>
+    </a>
 
     <div class="header-fields">
       <div class="nested-menu">

@@ -16,8 +16,8 @@ export interface ITaskRequest {
 export class TaskListComponent implements OnInit, OnDestroy {
 
   private subscription$: Subscription[] = [];
-  private taskRequest: ITaskRequest
-  taskList: TaskDto[];
+  private taskRequest: ITaskRequest | undefined
+  taskList: TaskDto[] | undefined;
 
   constructor(
     private taskService: TaskService

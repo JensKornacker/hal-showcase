@@ -1,5 +1,6 @@
 import {Directive, ElementRef, inject, Input, OnChanges, OnDestroy} from '@angular/core';
 import {ComponentProps, createElement, ElementType} from "react";
+// @ts-ignore
 import {createRoot} from 'react-dom/client';
 
 @Directive({

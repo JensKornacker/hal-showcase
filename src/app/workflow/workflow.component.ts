@@ -17,9 +17,9 @@ export interface RideBookedParameters {
 export class WorkflowComponent implements OnInit, OnDestroy {
 
   private subscription$: Subscription[] = [];
-  private rideId: string;
+  private rideId: string | undefined;
 
-  rideBookedParams: RideBookedParameters;
+  rideBookedParams: RideBookedParameters | undefined;
 
   constructor(
     private workflowService: WorkflowService,

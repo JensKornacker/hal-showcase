@@ -5,7 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {TaskService} from "./service/task.service";
 
 export interface IRideCharged {
-  amount: number;
+  amount?: number;
 }
 
 @Component({
@@ -20,9 +20,9 @@ export interface IRideCharged {
 export class TaskComponent implements OnInit, OnDestroy {
 
   private subscription$: Subscription[] = [];
-  rideId: string;
-  amount: number;
-  private rideCharged: IRideCharged;
+  rideId: string | null | undefined;
+  amount: number | undefined;
+  private rideCharged: IRideCharged | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,

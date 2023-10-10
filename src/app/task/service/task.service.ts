@@ -19,7 +19,7 @@ export class TaskService {
     private http: HttpClient
   ) { }
 
-  completeTask(rideId: string, rideCharged: IRideCharged): Observable<string> {
+  completeTask(rideId: string | null | undefined, rideCharged: IRideCharged): Observable<string> {
     return this.http.post(this.api_url + "/api/v1/ride/" + rideId + "/charged", rideCharged, {responseType: 'text'});
   }
 

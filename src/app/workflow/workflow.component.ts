@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WorkflowService} from "./service/workflow.service";
-import {Observable, Subject, Subscription, takeUntil} from "rxjs";
-import {ListOfTasks, ListOfWorkflows} from "@vanillabp/bc-ui";
-import {Configuration as OfficialApiConfiguration, OfficialWorkflowlistApi} from "@vanillabp/bc-official-gui-client";
-import {Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {WakeupSseCallbackReference, WorkflowPage} from "@vanillabp/bc-ui";
+import {OfficialWorkflowlistApi, UserTask} from "@vanillabp/bc-official-gui-client";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentProps} from "react";
 
 export interface RideBookedParameters {
@@ -13,21 +13,23 @@ export interface RideBookedParameters {
 }
 
 @Component({
-             selector: 'app-workflow',
-             templateUrl: './workflow.component.html',
-             styleUrls: ['./workflow.component.scss']
-           })
+  selector: 'app-workflow',
+  templateUrl: './workflow.component.html',
+  styleUrls: ['./workflow.component.scss']
+})
 export class WorkflowComponent implements OnInit, OnDestroy {
 
   private subscription$: Subscription[] = [];
   private rideId: string | undefined;
-
+  WorkFlowPage = WorkflowPage;
+  listOfProps: ComponentProps<typeof WorkflowPage>;
 
   rideBookedParams: RideBookedParameters | undefined;
 
   constructor(
     private workflowService: WorkflowService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -47,16 +49,21 @@ export class WorkflowComponent implements OnInit, OnDestroy {
     }
     this.subscription$.push(
       this.workflowService.bookRide(this.rideBookedParams).subscribe({
-         next: (value) => {
-           this.rideId = value;
-           console.log(this.rideId);
-           this.router.navigate(['tasks', this.rideId])
-         },
-         error: err => {
-           console.log('error', err);
-         }
-       })
+        next: (value) => {
+          this.rideId = value;
+          console.log(this.rideId);
+          this.router.navigate(['tasks', this.rideId])
+        },
+        error: err => {
+          console.log('error', err);
+        }
+      })
     )
+  }
+
+  ngOnInit(): void {
+    const workflowId = this.activatedRoute.snapshot.paramMap.get('id')
+    this.fillListOfProps(workflowId);
   }
 
   ngOnDestroy(): void {
@@ -65,8 +72,20 @@ export class WorkflowComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
+  fillListOfProps(workflowId: string) {
+    this.listOfProps = {
+      openTask(userTask: UserTask): void {},
+      showLoadingIndicator(show: boolean): void { },
+      t(key: string): string {
+        return "";
+      },
+      toast: () => {},
+      useWorkflowlistApi(wakeupSseCallback: WakeupSseCallbackReference | undefined): OfficialWorkflowlistApi {
+        return undefined;
+      },
+      workflowId: workflowId
+
+    }
   }
 
-  protected readonly ListOfTasks = ListOfTasks;
 }

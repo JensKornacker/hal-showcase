@@ -4,9 +4,13 @@ import {Subscription} from "rxjs";
 import {FormsModule} from "@angular/forms";
 import {TaskService} from "./service/task.service";
 import {NgIf} from "@angular/common";
-import {UserTaskPage} from "@vanillabp/bc-ui";
+import {UserTaskPage, WakeupSseCallbackReference} from "@vanillabp/bc-ui";
 import {ComponentProps} from "react";
-import {OfficialTasklistApi, Configuration as OfficialApiConfiguration} from "@vanillabp/bc-official-gui-client";
+import {
+  OfficialTasklistApi,
+  Configuration as OfficialApiConfiguration,
+  UserTask, Workflow
+} from "@vanillabp/bc-official-gui-client";
 import {ReactComponentDirective} from "../shared/react-component.directive";
 import {SideLayoutService} from "../shared/side-layout.service";
 

@@ -10,9 +10,8 @@ import {HomeComponent} from './home/home.component';
 import {NgOptimizedImage} from "@angular/common";
 import {WorkflowComponent} from "./workflow/workflow.component";
 import {HttpClientModule} from "@angular/common/http";
-import {TaskListComponent} from './task/task-list/task-list.component';
 import {ReactComponentDirective} from "./shared/react-component.directive";
-import { WorkflowListComponent } from './workflow/workflow-list/workflow-list.component';
+import {WorkflowListComponent} from './workflow/workflow-list/workflow-list.component';
 
 @NgModule({
   declarations: [

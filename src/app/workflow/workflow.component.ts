@@ -2,7 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WorkflowService} from "./service/workflow.service";
 import {Subscription} from "rxjs";
 import {WakeupSseCallbackReference, WorkflowPage} from "@vanillabp/bc-ui";
-import {OfficialWorkflowlistApi, UserTask} from "@vanillabp/bc-official-gui-client";
+import {OfficialWorkflowlistApi, UserTask,
+  Configuration as OfficialApiConfiguration} from "@vanillabp/bc-official-gui-client";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ComponentProps} from "react";
 
@@ -81,10 +82,9 @@ export class WorkflowComponent implements OnInit, OnDestroy {
       },
       toast: () => {},
       useWorkflowlistApi(wakeupSseCallback: WakeupSseCallbackReference | undefined): OfficialWorkflowlistApi {
-        return undefined;
+        return new OfficialWorkflowlistApi(new OfficialApiConfiguration({basePath: '/api/'}));
       },
       workflowId: workflowId
-
     }
   }
 

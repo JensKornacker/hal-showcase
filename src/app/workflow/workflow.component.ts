@@ -1,7 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WorkflowService} from "./service/workflow.service";
 import {Observable, Subject, Subscription, takeUntil} from "rxjs";
+import {ListOfTasks, ListOfWorkflows} from "@vanillabp/bc-ui";
+import {Configuration as OfficialApiConfiguration, OfficialWorkflowlistApi} from "@vanillabp/bc-official-gui-client";
 import {Router} from "@angular/router";
+import {ComponentProps} from "react";
 
 export interface RideBookedParameters {
   pickupLocation: object;
@@ -18,6 +21,7 @@ export class WorkflowComponent implements OnInit, OnDestroy {
 
   private subscription$: Subscription[] = [];
   private rideId: string | undefined;
+
 
   rideBookedParams: RideBookedParameters | undefined;
 
@@ -64,4 +68,5 @@ export class WorkflowComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
+  protected readonly ListOfTasks = ListOfTasks;
 }

@@ -6,17 +6,16 @@ import {ComponentProps} from "react";
 import {BcService} from "./bc.service";
 import {Subscription} from "rxjs";
 import {ListOfTasks} from "@vanillabp/bc-ui";
+import {Configuration as OfficialApiConfiguration, OfficialTasklistApi} from "@vanillabp/bc-official-gui-client";
 
 @Component({
-  standalone: true,
-  selector: 'app-integrate-react',
-  imports: [ReactComponentDirective, CommonModule],
-  templateUrl: './integrate-react.component.html',
-  styleUrls: ['./integrate-react.component.scss']
-})
+             standalone: true,
+             selector: 'app-integrate-react',
+             imports: [ReactComponentDirective, CommonModule],
+             templateUrl: './integrate-react.component.html',
+             styleUrls: ['./integrate-react.component.scss']
+           })
 export class IntegrateReactComponent implements OnInit {
-
-  ListOfTasks = ListOfTasks;
 
   Select = Select;
   business: any;
@@ -27,11 +26,12 @@ export class IntegrateReactComponent implements OnInit {
       console.log(v)
     },
     options: [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
+      {value: 'chocolate', label: 'Chocolate'},
+      {value: 'strawberry', label: 'Strawberry'},
+      {value: 'vanilla', label: 'Vanilla'}
     ]
   }
+
   constructor(
     private bcService: BcService
   ) {
@@ -44,21 +44,21 @@ export class IntegrateReactComponent implements OnInit {
   changeProps() {
     this.selectProps = {
       ...this.selectProps,
-      options: [{ value: 'changed', label: 'Changed' }]
+      options: [{value: 'changed', label: 'Changed'}]
     }
   }
 
   getBc() {
     this.subscription$.push(
       this.bcService.getBusinessCockpit().subscribe({
-        next: (result) => {
-          this.business = result;
-        }
-      })
+                                                      next: (result) => {
+                                                        this.business = result;
+                                                      }
+                                                    })
     )
   }
 
-  showLoadingIndicator() {
+  showLoadingIndicator = () => {
   }
 
   toast() {

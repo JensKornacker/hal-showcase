@@ -1,16 +1,7 @@
-<p>task works!</p>
 <div class="row">
-  <div class="col-md">
-    <h1>Bezahlen</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
-    <div class="input-group">
-      <input type="number" class="form-control" [(ngModel)]="amount">
-    </div>
-    <div class="input-group mt-3">
-      <button class="btn btn-sm btn-outline-success" (click)="charge()">charge</button>
+  <div class="col">
+    <div *ngIf="userTaskId">
+      <div [reactComponent]="UserTaskPage" [props]="listOfProps"></div>
     </div>
   </div>
 </div>

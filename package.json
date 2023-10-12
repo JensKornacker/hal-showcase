@@ -22,15 +22,18 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@ng-bootstrap/ng-bootstrap": "^15.1.1",
+    "@vanillabp/bc-official-gui-client": "^0.0.1-SNAPSHOT",
     "@vanillabp/bc-ui": "0.0.1-SNAPSHOT",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
+    "i18next": "^22.0.3",
     "react-select": "^5.7.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^16.0.1",
     "@angular-devkit/build-angular": "^16.2.4",
     "@angular/cli": "^16.2.4",
     "@angular/compiler-cli": "^16.2.0",
